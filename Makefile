@@ -4,7 +4,7 @@ NAME = philo
 # Compilateur et flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I $(INCDIR)
-
+BFLAGS = -Wall -Wextra -Werror -g -I $(INCDIR) -fsanitize=thread
 
 # Dossiers
 SRCDIR = src
@@ -38,6 +38,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 # Création du dossier obj si nécessaire
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
+
+
+debug: CFLAGS += -fsanitize=thread
+debug: re
 
 # Nettoyage des fichiers objets
 clean:
