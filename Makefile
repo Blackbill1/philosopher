@@ -4,7 +4,6 @@ NAME = philo
 # Compilateur et flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -I $(INCDIR)
-BFLAGS = -Wall -Wextra -Werror -g -I $(INCDIR) -fsanitize=thread
 
 # Dossiers
 SRCDIR = src
@@ -43,6 +42,9 @@ $(OBJDIR):
 debug: CFLAGS += -fsanitize=thread
 debug: re
 
+leak: CFLAGS += -fsanitize=address
+leak: re
+
 # Nettoyage des fichiers objets
 clean:
 	@rm -rf $(OBJDIR)
@@ -73,4 +75,4 @@ norm:
 	fi
 
 # Ignorer les erreurs sur ces règles
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re norm debug leak
