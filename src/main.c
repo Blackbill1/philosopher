@@ -6,7 +6,7 @@
 /*   By: tle-dref <tle-dref@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:03:15 by tle-dref          #+#    #+#             */
-/*   Updated: 2024/11/13 19:10:34 by tle-dref         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:01:54 by tle-dref         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	create_threads(philos);
 	if (pthread_create(&monitor_thread, NULL, &monitor_all, philos) != 0)
 	{
-		perror("Failed to create monitor thread");
+		printf("Failed to create monitor thread\n");
 		destroy_mutexes(philos);
 		free(philos);
 		return (1);

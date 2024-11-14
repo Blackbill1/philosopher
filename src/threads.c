@@ -6,7 +6,7 @@
 /*   By: tle-dref <tle-dref@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:06:16 by tle-dref          #+#    #+#             */
-/*   Updated: 2024/11/13 19:18:28 by tle-dref         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:03:55 by tle-dref         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	wait_threads(t_philo *philos)
 	{
 		if (pthread_join(philos[i].thread, NULL) != 0)
 		{
-			perror("Failed to join thread");
-			exit(1);
+			printf("Failed to join thread\n");
+			return ;
 		}
 		i++;
 	}
@@ -96,8 +96,8 @@ void	create_threads(t_philo *philos)
 	{
 		if (pthread_create(&philos[i].thread, NULL, &routine, &philos[i]) != 0)
 		{
-			perror("Failed to create thread");
-			exit(1);
+			printf("Failed to create thread\n");
+			return ;
 		}
 		i++;
 	}
